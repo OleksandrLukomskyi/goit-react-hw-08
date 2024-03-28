@@ -11,7 +11,7 @@ import PublicRoute from '../../guards/PublicRoute';
 // import Loader from '../../components/Loader/Loader';
 
 
-import { useAuth } from '../../hooks';
+// import { useAuth } from '../../hooks';
 import { refreshUser } from '../../store/auth/operations';
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
@@ -22,14 +22,14 @@ const App = () => {
 
   
   const dispatch = useDispatch();
-  const {isRefreshing} = useAuth()
+  // const {isRefreshing} = useAuth()
   
 
   useEffect(() => {
 
    dispatch(refreshUser());
    
-  }, [isRefreshing, dispatch]);
+  }, [dispatch]);
 
 
  
