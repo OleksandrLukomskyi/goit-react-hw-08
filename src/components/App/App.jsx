@@ -7,10 +7,10 @@ import { useDispatch} from 'react-redux';
 
 import PrivateRoute from '../../guards/PrivateRoute';
 import PublicRoute from '../../guards/PublicRoute';
-// import { refreshProfileThunk } from '../../store/auth/authThunk';
-import Loader from '../../components/Loader/Loader';
 
-// import { selectProfile } from 'store/auth/selectorsAuth';
+// import Loader from '../../components/Loader/Loader';
+
+
 import { useAuth } from '../../hooks';
 import { refreshUser } from '../../store/auth/operations';
 const HomePage = lazy(() => import('../../pages/HomePage'));
@@ -20,13 +20,10 @@ const RegistrationPage = lazy(() => import('../../pages/RegistrationPage'));
 
 const App = () => {
 
-  // const profile = useSelector(selectProfile);
+  
   const dispatch = useDispatch();
   const {isRefreshing} = useAuth()
   
-  // useEffect(() => {
-  //   !profile && dispatch(refreshProfileThunk());
-  // }, [profile, dispatch]);
 
   useEffect(() => {
 

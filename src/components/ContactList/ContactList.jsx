@@ -6,7 +6,7 @@ import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectVisibleContacts } from '../../store/filter/thunksFilter';
-import { fetchContactsThunk } from '../../store/contacts/thunksContacts';
+import { fetchContacts} from '../../store/contacts/operations';
 import { selectorIsLoading } from '../../store/contacts/selector';
 
 const ContactList = () => {
@@ -15,7 +15,7 @@ const ContactList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
 
   useEffect(() => {
-    dispatch(fetchContactsThunk());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (

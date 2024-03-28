@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import {
-//   logInThunk,
-//   logOutThunk,
-//   refreshProfileThunk,
-//   registerThunk,
-// } from './authThunk';
+
 import { handleSingUp } from "./handlers";
 import { logIn, logOut, refreshUser, register } from "./operations";
 

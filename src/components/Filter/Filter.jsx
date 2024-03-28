@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorFilter } from '../../store/filter/selector';
 import { updateFilterAction } from '../../store/filter/sliceFilter';

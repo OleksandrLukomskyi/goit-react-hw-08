@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { selectorError } from "../store/contacts/selector"
-// import { selectorError } from "./store/contacts/selector"
 import css from '../components/App/App.module.css'
 import ContactForm from "../components/ContactForm";
 import Filter from "../components/Filter";
