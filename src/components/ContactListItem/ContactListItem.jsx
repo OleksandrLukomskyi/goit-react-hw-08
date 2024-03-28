@@ -6,6 +6,7 @@ import { deleteContact} from '../../store/contacts/operations';
 
 const ContactListItem = ({ item }) => {
   const dispatch = useDispatch();
+  console.log(item.id)
 
   return (
     <li key={item.id} className={css.item}>

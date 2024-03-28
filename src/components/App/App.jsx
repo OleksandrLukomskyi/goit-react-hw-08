@@ -8,10 +8,10 @@ import { useDispatch} from 'react-redux';
 import PrivateRoute from '../../guards/PrivateRoute';
 import PublicRoute from '../../guards/PublicRoute';
 
-// import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/Loader/Loader';
 
 
-// import { useAuth } from '../../hooks';
+import { useAuth } from '../../hooks';
 import { refreshUser } from '../../store/auth/operations';
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
@@ -22,7 +22,7 @@ const App = () => {
 
   
   const dispatch = useDispatch();
-  // const {isRefreshing} = useAuth()
+  const {isRefreshing} = useAuth()
   
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
  
   //  isRefreshing ? (<Loader />) :
   // isRefreshing ? (<b> Refreshing user...</b>) :
-    return ( 
+    return isRefreshing ? (<b> Refreshing user...</b>) : ( 
     <Suspense fallback={null}>
       
         <Routes>
@@ -45,26 +45,25 @@ const App = () => {
             <Route
               path="/contacts"
               element={
-                <PrivateRoute redirectTo='/login'>
-                  <ContactsPage />
-                </PrivateRoute>
+                <PrivateRoute redirectTo='/login' component={<ContactsPage />}/>
+                  
+                
               }
             />
           </Route>
           <Route
             path="/login"
             element={
-              <PublicRoute redirectTo='/contacts'>
-                <LoginPage />
-              </PublicRoute>
+              <PublicRoute redirectTo='/contacts'component={<LoginPage />}/>
+               
             }
           />
           <Route
             path="/register"
             element={
-              <PublicRoute redirectTo='/contacts'>
-                <RegistrationPage />
-              </PublicRoute>
+              <PublicRoute redirectTo='/contacts' component={<RegistrationPage />}/>
+               
+              
             }
           />
           

@@ -1,8 +1,12 @@
 
+import { useDispatch } from 'react-redux';
 import css from './LoginForm.module.css';
 import { Link } from 'react-router-dom';
+import { logIn } from '../../store/auth/operations';
 
-export const LoginForm = ({ login }) => {
+export const LoginForm = () => {
+  const dispatch = useDispatch()
+
 
 
   const handleSubmit = e => {
@@ -10,7 +14,18 @@ export const LoginForm = ({ login }) => {
 
 
     const { email, password } = e.target.elements;
-    login({ email: email.value, password: password.value });
+    dispatch(
+      logIn({ email: email.value, password: password.value })
+      )
+      .unwrap()
+      .then(() => {console.log('login success')})
+      .catсh(() =>{
+        console.log('login error')
+      })
+
+      
+    e.target.reset();
+
   };
 
   return (
