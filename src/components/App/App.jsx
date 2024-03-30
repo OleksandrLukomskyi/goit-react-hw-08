@@ -1,79 +1,63 @@
-import { Route, Routes } from 'react-router-dom';
-import { Suspense, lazy, useEffect } from 'react';
-import Layout from '../Layout/Layout';
+import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy, useEffect } from "react";
+import Layout from "../Layout/Layout";
 
-import { useDispatch} from 'react-redux';
+import { useDispatch } from "react-redux";
 
+import PrivateRoute from "../../guards/PrivateRoute";
+import PublicRoute from "../../guards/PublicRoute";
 
-import PrivateRoute from '../../guards/PrivateRoute';
-import PublicRoute from '../../guards/PublicRoute';
+// import Loader from "../../components/Loader/Loader";
 
-import Loader from '../../components/Loader/Loader';
-
-
-import { useAuth } from '../../hooks';
-import { refreshUser } from '../../store/auth/operations';
-const HomePage = lazy(() => import('../../pages/HomePage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage'));
-const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
-const RegistrationPage = lazy(() => import('../../pages/RegistrationPage'));
+import { useAuth } from "../../hooks";
+import { refreshUser } from "../../store/auth/operations";
+const HomePage = lazy(() => import("../../pages/HomePage"));
+const LoginPage = lazy(() => import("../../pages/LoginPage"));
+const ContactsPage = lazy(() => import("../../pages/ContactsPage"));
+const RegistrationPage = lazy(() => import("../../pages/RegistrationPage"));
 
 const App = () => {
-
-  
   const dispatch = useDispatch();
-  const {isRefreshing} = useAuth()
-  
+  const { isRefreshing } = useAuth();
+  console.log(isRefreshing);
 
   useEffect(() => {
-
-   dispatch(refreshUser());
-   
+    dispatch(refreshUser());
+    console.log(refreshUser());
   }, [dispatch]);
 
-
- 
   //  isRefreshing ? (<Loader />) :
   // isRefreshing ? (<b> Refreshing user...</b>) :
-    return isRefreshing ? (<b> Refreshing user...</b>) : ( 
-    <Suspense fallback={null}>
-      
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
+  return   isRefreshing ? (<b> Refreshing user...</b>) : (<Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
 
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute redirectTo='/login' component={<ContactsPage />}/>
-                  
-                
-              }
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
+        </Route>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute
+              redirectTo="/contacts"
+              component={<RegistrationPage />}
             />
-          </Route>
-          <Route
-            path="/login"
-            element={
-              <PublicRoute redirectTo='/contacts'component={<LoginPage />}/>
-               
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicRoute redirectTo='/contacts' component={<RegistrationPage />}/>
-               
-              
-            }
-          />
-          
-          
-        </Routes>
-      </Suspense> 
-      );
-
-  
-
+          }
+        />
+      </Routes>
+    </Suspense>
+  );
 };
 
 export default App;

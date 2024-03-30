@@ -19,9 +19,7 @@ export const LoginForm = () => {
       )
       .unwrap()
       .then(() => {console.log('login success')})
-      .catсh(() =>{
-        console.log('login error')
-      })
+      .catch(() => {console.log('login error')})
 
       
     e.target.reset();
