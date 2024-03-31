@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 import Layout from "../Layout/Layout";
 
@@ -25,8 +25,8 @@ const App = () => {
   console.log(isRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser()).unwrap().then(() => toast.success('Logged in successfully')).catch();
-   
+    // dispatch(refreshUser()).unwrap().then(() => toast.success('Logged in successfully')).catch();
+    dispatch(refreshUser())
   }, [dispatch]);
 
   //  isRefreshing ? (<Loader />) :
