@@ -16,6 +16,7 @@ export const Header = () => {
     
     <header>
       <Navigation/>
+      
       {isLoggedIn ? <UserMenu/> : <AuthNav/>}
       
     </header>

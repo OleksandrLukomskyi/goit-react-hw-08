@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
+import toast from "react-hot-toast";
+
 import Layout from "../Layout/Layout";
 
 import { useDispatch } from "react-redux";
@@ -11,6 +13,7 @@ import PublicRoute from "../../guards/PublicRoute";
 
 import { useAuth } from "../../hooks";
 import { refreshUser } from "../../store/auth/operations";
+
 const HomePage = lazy(() => import("../../pages/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage"));
 const ContactsPage = lazy(() => import("../../pages/ContactsPage"));
@@ -22,13 +25,14 @@ const App = () => {
   console.log(isRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
-    console.log(refreshUser());
+    dispatch(refreshUser()).unwrap().then(() => toast.success('Logged in successfully')).catch();
+   
   }, [dispatch]);
 
   //  isRefreshing ? (<Loader />) :
   // isRefreshing ? (<b> Refreshing user...</b>) :
-  return   isRefreshing ? (<b> Refreshing user...</b>) : (<Suspense fallback={null}>
+  return   isRefreshing ? (<b> Refreshing user...</b>) : (
+  <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
