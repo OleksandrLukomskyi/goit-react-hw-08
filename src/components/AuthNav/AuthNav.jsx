@@ -1,17 +1,18 @@
+import { Button, Grid} from "@mui/material";
 import { NavLink } from "react-router-dom"
 
 
  const AuthNav = () => {
   return (
-    <div>
+    <Grid container justifyContent='flex-end'>
       <NavLink to="/register">
-         Register
+        <Button variant="text" style={{color: 'white'}}> Register</Button>
       </NavLink>
       <NavLink to="/login">
-         Log In
+        <Button variant="text" style={{color: 'white'}}> Log In</Button>
       </NavLink>
 
-    </div>
+    </Grid>
   )
 }
 

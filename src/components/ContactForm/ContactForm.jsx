@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import css from './ContactForm.module.css';
-import { addContact} from '../../store/contacts/operations';
-import { selectorContacts } from '../../store/contacts/selector';
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import css from "./ContactForm.module.css";
+import { addContact } from "../../store/contacts/operations";
+import { selectorContacts } from "../../store/contacts/selector";
 
 const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
 
   const dispatch = useDispatch();
   const items = useSelector(selectorContacts);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    name === 'name' ? setName(value) : setNumber(value);
+    name === "name" ? setName(value) : setNumber(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const isExist = items.some(
-      item => item.name === name.trim() || item.number === number.trim()
+      (item) => item.name === name.trim() || item.number === number.trim()
     );
 
     if (isExist) {
@@ -35,8 +35,8 @@ const ContactForm = () => {
 
     dispatch(addContact(newContact));
 
-    setNumber('');
-    setName('');
+    setNumber("");
+    setName("");
 
     e.target.reset();
   };

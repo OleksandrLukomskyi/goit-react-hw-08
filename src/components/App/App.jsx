@@ -9,8 +9,6 @@ import { useDispatch } from "react-redux";
 import PrivateRoute from "../../guards/PrivateRoute";
 import PublicRoute from "../../guards/PublicRoute";
 
-// import Loader from "../../components/Loader/Loader";
-
 import { useAuth } from "../../hooks";
 import { refreshUser } from "../../store/auth/operations";
 
@@ -22,17 +20,15 @@ const RegistrationPage = lazy(() => import("../../pages/RegistrationPage"));
 const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  console.log(isRefreshing);
 
   useEffect(() => {
-    // dispatch(refreshUser()).unwrap().then(() => toast.success('Logged in successfully')).catch();
-    dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  //  isRefreshing ? (<Loader />) :
-  // isRefreshing ? (<b> Refreshing user...</b>) :
-  return   isRefreshing ? (<b> Refreshing user...</b>) : (
-  <Suspense fallback={null}>
+  return isRefreshing ? (
+    <b> Refreshing user...</b>
+  ) : (
+    <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

@@ -1,12 +1,9 @@
-
-import css from './ContactListItem.module.css';
-import { useDispatch } from 'react-redux';
-import { deleteContact} from '../../store/contacts/operations';
-
+import css from "./ContactListItem.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../store/contacts/operations";
 
 const ContactListItem = ({ item }) => {
   const dispatch = useDispatch();
-  console.log(item.id)
 
   return (
     <li key={item.id} className={css.item}>

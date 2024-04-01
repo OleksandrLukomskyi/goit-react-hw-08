@@ -1,6 +1,7 @@
 import { useDispatch} from 'react-redux';
 import { logOut } from '../../store/auth/operations';
 import { useAuth } from '../../hooks';
+import { Button, Typography } from '@mui/material';
 
 export const UserMenu = () => {
   
@@ -9,10 +10,10 @@ export const UserMenu = () => {
 
   return (
     <>
-      <p>Welcom, {profile.email}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
+      <Typography component='p' sx={{ flexGrow: 1}}>Welcom, {profile.email}</Typography>
+      <Button variant='text' color='inherit' onClick={() => dispatch(logOut())} sx={{ flexGrow: 1}} >
         Logout
-      </button>
+      </Button>
     </>
   );
 };
