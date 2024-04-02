@@ -1,7 +1,7 @@
 import { RegistrationForm } from "../components/RegistrationForm/RegistrationForm";
 
 import { useDispatch } from "react-redux";
-import { register } from "../store/auth/operations";
+import { register } from "../redux/auth/operations";
 import { DocumentTitle } from "../components/DocumentTitle";
 
 const RegistrationPage = () => {

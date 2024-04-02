@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
-import { logIn } from "../../store/auth/operations";
+import { logIn } from "../../redux/auth/operations";
 import {
   Button,
   Container,

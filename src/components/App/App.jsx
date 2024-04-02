@@ -10,7 +10,7 @@ import PrivateRoute from "../../guards/PrivateRoute";
 import PublicRoute from "../../guards/PublicRoute";
 
 import { useAuth } from "../../hooks";
-import { refreshUser } from "../../store/auth/operations";
+import { refreshUser } from "../../redux/auth/operations";
 
 const HomePage = lazy(() => import("../../pages/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage"));

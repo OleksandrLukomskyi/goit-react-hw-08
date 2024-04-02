@@ -2,7 +2,7 @@ import { LoginForm } from "../components/LoginForm/LoginForm";
 
 import { useDispatch } from "react-redux";
 
-import { logIn } from "../store/auth/operations";
+import { logIn } from "../redux/auth/operations";
 import { DocumentTitle } from "../components/DocumentTitle";
 
 const LoginPage = () => {

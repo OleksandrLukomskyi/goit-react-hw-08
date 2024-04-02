@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { globalLoadingSelector } from "../../store/root/rootSelectors"
+import { globalLoadingSelector } from "../../redux/root/rootSelectors"
 
 
 const Loader = () => {

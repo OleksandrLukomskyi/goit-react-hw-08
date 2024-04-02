@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'modern-normalize';
 import { Provider } from 'react-redux';
-import { store, persistor } from './store/store';
+import { store, persistor } from './redux/store';
 import App from './components/App/App';
 import { BrowserRouter } from 'react-router-dom';
 
