@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/auth/operations";
 import {
+  Box,
   Button,
   Container,
   Grid,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -31,11 +31,10 @@ export const LoginForm = () => {
   };
 
   return (
-    <Container component="form" maxWidth="xs" onSubmit={handleSubmit}>
-      <Paper>
-        <Grid container justifyContent="flex-end">
-          <Link to="/">Home</Link>
-        </Grid>
+    <Container component="form" maxWidth="xs" onSubmit={handleSubmit} style={{display: 'flex', alignItems: 'center', minHeight: '100vh'}}>
+      
+        <Box sx={{border: '1px solid #ccc', padding: '20px', borderRadius: '8px'}}>
+       
         <Typography variant="h4">Log in</Typography>
 
         <Grid container spacing={2}>
@@ -73,7 +72,8 @@ export const LoginForm = () => {
             </Link>
           </Grid>
         </Grid>
-      </Paper>
+        </Box>
+      
     </Container>
   );
 };

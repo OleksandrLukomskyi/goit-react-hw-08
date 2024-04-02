@@ -1,30 +1,33 @@
 import {
+  Box,
   Button,
   Container,
   Grid,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { register } from "../../redux/auth/operations";
 
-export const RegistrationForm = ({ register }) => {
+export const RegistrationForm = () => {
+  const dispatch = useDispatch()
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const { name, email, password } = e.target.elements;
-    register({
+    dispatch(register({
       name: name.value,
       email: email.value,
       password: password.value,
-    });
+    }));
   };
   return (
-    <Container component="form" maxWidth="xs" onSubmit={handleSubmit}>
-      <Paper>
-        <Grid container justifyContent="flex-end">
-          <Link to="/">Home</Link>
-        </Grid>
+    <Container component="form" maxWidth="xs" onSubmit={handleSubmit} style={{display: 'flex', alignItems: 'center', minHeight: '100vh'}}>
+      
+      <Box sx={{border: '1px solid #ccc', padding: '20px', borderRadius: '8px'}}>
+        
         <Typography variant="h4">Sign Up</Typography>
 
         <Grid container spacing={2}>
@@ -73,7 +76,7 @@ export const RegistrationForm = ({ register }) => {
             </Link>
           </Grid>
         </Grid>
-      </Paper>
+      </Box>
     </Container>
   );
 };

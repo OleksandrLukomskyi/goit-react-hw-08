@@ -1,15 +1,15 @@
-import { Header } from "../../components/Header/Header"
-import { Outlet } from "react-router-dom"
+import { AppBar } from "../AppBar/AppBar"
 
 
 
 
 
-const Layout = () => {
+
+const Layout = ({children}) => {
   return (
     <div>
-      <Header/>
-      <Outlet/>
+      <AppBar/>
+      {children}
     </div>
   )
 }

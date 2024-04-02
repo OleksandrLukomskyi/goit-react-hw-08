@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { handleSingUp } from "./handlers";
 import { logIn, logOut, refreshUser, register } from "./operations";
 
 const initialState = {
@@ -8,6 +7,12 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+};
+
+const handleSingUp = (state, { payload }) => {
+  state.token = payload.token;
+  state.profile = payload.user;
+  state.isLoggedIn = true;
 };
 
 export const authSlice = createSlice({

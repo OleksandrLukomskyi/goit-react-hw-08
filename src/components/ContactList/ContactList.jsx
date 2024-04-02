@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectVisibleContacts } from '../../redux/filter/thunksFilter';
 import { fetchContacts} from '../../redux/contacts/operations';
-import { selectorIsLoading } from '../../redux/contacts/selector';
+import { selectorIsLoading } from '../../redux/contacts/selectors';
 
 const ContactList = () => {
   const dispatch = useDispatch();
