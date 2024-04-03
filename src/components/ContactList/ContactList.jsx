@@ -5,7 +5,7 @@ import ContactListItem from '../ContactListItem'
 import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectVisibleContacts } from '../../redux/filter/thunksFilter';
+import { selectVisibleContacts } from '../../redux/filters/thunksFilter';
 import { fetchContacts} from '../../redux/contacts/operations';
 import { selectorIsLoading } from '../../redux/contacts/selectors';
 
