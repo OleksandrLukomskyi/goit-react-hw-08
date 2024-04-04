@@ -6,11 +6,11 @@ import { Button, Typography } from '@mui/material';
 export const UserMenu = () => {
   
   const dispatch = useDispatch();
-  const {profile} = useAuth();
+  const {user} = useAuth();
 
   return (
     <>
-      <Typography component='p' sx={{ flexGrow: 1}}>Welcom, {profile.email}</Typography>
+      <Typography component='p' sx={{ flexGrow: 1}}>Welcom, {user.email}</Typography>
       <Button variant='text' color='inherit' onClick={() => dispatch(logOut())} sx={{ flexGrow: 1}} >
         Logout
       </Button>

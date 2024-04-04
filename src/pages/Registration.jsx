@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/operations";
 import { DocumentTitle } from "../components/DocumentTitle";
 
-const RegistrationPage = () => {
+const Registration = () => {
   const dispatch = useDispatch();
 
   const registerUser = (body) => {
@@ -19,4 +19,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default Registration;

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../redux/auth/operations";
 import { DocumentTitle } from "../components/DocumentTitle";
 
-const LoginPage = () => {
+const Login = () => {
   const dispatch = useDispatch();
 
   const login = (body) => {
@@ -20,4 +20,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
